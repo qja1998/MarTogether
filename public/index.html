@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>방 참여 및 제품 선택</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- 방 생성 영역 -->
+  <div class="container" id="room-creation">
+    <h2>방 생성</h2>
+    <button id="create-room-btn">방 생성하기</button>
+    <p id="room-code-display" class="hidden">
+      생성된 방 코드: <span id="room-code"></span>
+    </p>
+  </div>
+
+  <!-- 방 참여 영역 -->
+  <div class="container" id="join-room">
+    <h2>방 참여</h2>
+    <div class="input-group">
+      <label for="join-room-code">방 코드 입력:</label>
+      <input type="text" id="join-room-code" placeholder="방 코드를 입력하세요">
+    </div>
+    <div class="input-group">
+      <label for="user-name">사용자 이름:</label>
+      <input type="text" id="user-name" placeholder="이름을 입력하세요">
+    </div>
+    <button id="join-room-btn">방 참여하기</button>
+  </div>
+
+  <!-- 제품 선택 영역 -->
+  <div class="container hidden" id="product-selection">
+    <h2>제품 선택</h2>
+    <ul class="product-list" id="product-list"></ul>
+    <button id="confirm-selection-btn">확인</button>
+  </div>
+
+  <!-- 사용자별 선택한 제품 목록 및 합계 표시 영역 -->
+  <div class="container hidden" id="user-products-display">
+    <h2>선택한 제품 목록</h2>
+    <div id="user-products"></div>
+  </div>
+
+  <!-- Socket.IO 클라이언트 라이브러리 (서버에서 정적으로 제공) -->
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

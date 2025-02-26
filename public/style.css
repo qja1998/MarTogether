@@ -1,0 +1,58 @@
+body {
+  background-color: #f5fbff;
+  margin: 0;
+  padding-top: 60px;
+  font-family: Arial, sans-serif;
+}
+
+.hidden {
+  display: none;
+}
+
+.container {
+  width: 300px;
+  margin: 20px auto;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background: #fff;
+}
+
+.input-group {
+  margin-bottom: 10px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 5px;
+}
+
+button {
+  width: 100%;
+  padding: 8px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 3px;
+  background-color: #1976bc;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #155a8a;
+}
+
+.product-list {
+  list-style: none;
+  padding: 0;
+}
+
+.product-list li {
+  margin: 8px 0;
+}
