@@ -2,8 +2,18 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <title>방 참여 및 제품 선택</title>
+  <title>방 참여 및 영수증 OCR 제품 추가</title>
   <link rel="stylesheet" href="style.css">
+
+  <!-- FontAwesome (아이콘용) -->
+  <link rel="stylesheet" 
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
+        referrerpolicy="no-referrer" />
+
+  <!-- Cropper.js CSS -->
+  <link rel="stylesheet" 
+        href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.css" 
+        referrerpolicy="no-referrer" />
 </head>
 <body>
   <!-- 방 생성 영역 -->
@@ -29,21 +39,45 @@
     <button id="join-room-btn">방 참여하기</button>
   </div>
 
-  <!-- 제품 선택 영역 -->
-  <div class="container hidden" id="product-selection">
-    <h2>제품 선택</h2>
+  <!-- 제품 관리 및 선택 영역 (영수증 OCR 포함) -->
+  <div class="container hidden" id="product-section">
+    <h2>제품 관리 및 선택</h2>
+    <!-- 영수증 업로드 및 크롭 영역 -->
+    <div class="input-group">
+      <label for="receipt-upload">영수증 업로드 (제품 영역 크롭):</label>
+      <input type="file" id="receipt-upload" accept="image/*">
+    </div>
+    <!-- 크롭 미리보기 영역 -->
+    <div id="crop-container" class="hidden">
+      <img id="crop-image" src="" alt="영수증 크롭 이미지">
+      <button id="crop-btn">선택 완료</button>
+    </div>
+    <div id="ocr-status"></div>
+    
+    <!-- 제품 목록 (한 줄에 체크박스, 제품정보, 수정/삭제 아이콘) -->
     <ul class="product-list" id="product-list"></ul>
-    <button id="confirm-selection-btn">확인</button>
+    <button id="confirm-selection-btn">선택 확인</button>
+    
+    <!-- 수동 제품 추가 폼 -->
+    <div class="input-group">
+      <input type="text" id="new-product-name" placeholder="제품 이름">
+    </div>
+    <div class="input-group">
+      <input type="number" id="new-product-price" placeholder="제품 가격">
+    </div>
+    <button id="add-product-btn">제품 추가</button>
   </div>
 
-  <!-- 사용자별 선택한 제품 목록 및 합계 표시 영역 -->
+  <!-- 유저별 선택한 제품 및 합계 표시 영역 -->
   <div class="container hidden" id="user-products-display">
     <h2>선택한 제품 목록</h2>
     <div id="user-products"></div>
   </div>
 
-  <!-- Socket.IO 클라이언트 라이브러리 (서버에서 정적으로 제공) -->
+  <!-- Socket.IO, Cropper.js, Tesseract.js -->
   <script src="/socket.io/socket.io.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tesseract.js/4.0.2/tesseract.min.js" referrerpolicy="no-referrer"></script>
   <script src="script.js"></script>
 </body>
 </html>
